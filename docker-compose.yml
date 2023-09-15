@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+  namenode:
+    image: apache/hadoop:3
+    hostname: namenode
+    command: [ "hdfs", "namenode" ]
+    ports:
+      - 9870:9870
+    env_file:
+      - ./config
+    environment:
+      ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
+      HADOOP_HOME: /opt/hadoop
+  datanode:
+    image: apache/hadoop:3
+    command: [ "hdfs", "datanode" ]
+    env_file:
+      - ./config
+    volumes:
+      - ./wordcount:/app/wordcount
+  resourcemanager:
+    image: apache/hadoop:3
+    hostname: resourcemanager
+    command: [ "yarn", "resourcemanager" ]
+    ports:
+      - 8088:8088
+    env_file:
+      - ./config
+    volumes:
+      - ./test.sh:/opt/test.sh
+  nodemanager:
+    image: apache/hadoop:3
+    command: [ "yarn", "nodemanager" ]
+    env_file:
+      - ./config
+
+  wordcount:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - JAVA_HOME=/opt/java/openjdk
+      - HADOOP_VERSION=3.3.6
+      - HADOOP_HOME=/opt/hadoop
+    volumes:
+      - ./wordcount:/app
+      - ./hadoop-3.3.6:/opt/hadoop
