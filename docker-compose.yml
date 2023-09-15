@@ -43,6 +43,7 @@ services:
       - JAVA_HOME=/opt/java/openjdk
       - HADOOP_VERSION=3.3.6
       - HADOOP_HOME=/opt/hadoop
+      # - PATH=$PATH:/opt/hadoop/bin:/opt/hadoop/sbin
     volumes:
       - ./wordcount:/app
       - ./hadoop-3.3.6:/opt/hadoop
