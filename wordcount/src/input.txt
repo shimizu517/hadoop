@@ -1,0 +1,25 @@
+Hello world
+This is a sample input text
+For the WordCount program
+Each line contains words
+Some lines have repeated words
+And some lines have unique words
+WordCount counts the occurrences of each word
+It produces a word count for each unique word
+This helps in analyzing the frequency of words
+In a given text
+Hello again
+This is another line
+And here is yet another line
+With some more words
+Words and words
+WordCount program is simple
+But it is a useful tool
+To understand the text data
+And extract insights from it
+WordCount is a common task
+In data analysis and text processing
+It helps in summarizing text data
+And identifying important keywords
+This is the end of the sample text
+Goodbye
